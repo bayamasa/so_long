@@ -24,8 +24,12 @@ int	main(void)
 	mlx_win = mlx_new_window(mlx, 400, 400, "so_long");
 	chara.path = "./chara.xpm";
 	chara.img = mlx_xpm_file_to_image(mlx, chara.path, &chara.bits_per_pixel, &chara.line_length);
-	// wall.img = mlx_xpm_file_to_image(mlx, )
+	wall.path = "./kabe.xpm";
+	wall.img = mlx_xpm_file_to_image(mlx, wall.path, &wall.bits_per_pixel, &wall.line_length);
 	// chara.addr = 
-	mlx_put_image_to_window(mlx, mlx_win, chara.img, 0, 0);
+	mlx_put_image_to_window(mlx, mlx_win, wall.img, 0, 0);
+	mlx_put_image_to_window(mlx, mlx_win, wall.img, 50, 0);
+
+	mlx_put_image_to_window(mlx, mlx_win, chara.img, 50, 50);
 	mlx_loop(mlx);
 }
