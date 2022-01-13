@@ -6,7 +6,7 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/13 16:44:44 by mhirabay          #+#    #+#              #
-#    Updated: 2022/01/13 16:53:56 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/01/13 17:02:27 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,3 +34,4 @@ fclean: clean
 	${RM} ${NAME} ${OBJS}
 re:		fclean all
 
+.PHONY: all clean fclean re .c.o
