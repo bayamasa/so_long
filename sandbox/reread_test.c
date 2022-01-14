@@ -19,7 +19,6 @@ int	main()
 	line = get_next_line(fd, &status);
 	printf("line : %s\n", line);
 	close(fd);
-
 	fd = open("files/one_line", O_RDONLY);
 	line = get_next_line(fd, &status);
 	printf("line : %s\n", line);

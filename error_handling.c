@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 21:09:30 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/14 15:54:04 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/14 17:12:07 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,21 @@
 // ちゃんと全部の値がfreeできているかテストする
 void	free_all(char *line, char **map)
 {
+	size_t	i;
 
-	// i = 
+	i = 0;
 	if (line != NULL)
+	{
 		free(line);
+	}
 	if (map != NULL)
 	{
-		if (*map != NULL)
+		while (map[i] != NULL)
 		{
-			// printf("kita\n");
-			// printf("*map : %s\n", *map);
-			free(map);
-			// *map = NULL;
-			// *map = (*map)++;
-			// printf("map : %s\n", *map);
+			free(map[i]);
+			i++;
 		}
-		else
-			free(map);
+		free(map);
 	}
 }
 
