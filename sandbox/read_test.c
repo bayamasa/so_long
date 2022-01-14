@@ -80,10 +80,8 @@ char	**store_all_line(char *filepath, char **map)
 		map[h] = line;
 		h++;
 	}
-	print_map(map);
 	return (map);
 }
-
 
 char	**store_map_from_file(char *filepath)
 {
@@ -96,16 +94,15 @@ char	**store_map_from_file(char *filepath)
 	// → NULL止めの参照分のポインタのサイズを忘れていただけ +1して解決。
 	map = (char **)malloc(sizeof(char *) * (line_num + 1));
 	map = store_all_line(filepath, map);
-	// print_map(map);
-
+	
 	return (map);
 }
 
 
 int	main()
 {
-	char **map;
-	char *filepath = "files/5_line";
+	char	**map;
+	char	*filepath = "files/5_line";
 
 	map = store_map_from_file(filepath);
 	free_all(NULL, map);
