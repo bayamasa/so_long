@@ -77,7 +77,6 @@ char	**store_all_line(char *filepath, char **map)
 			map[h] = NULL;
 			break ;
 		}
-		printf("line : %s\n", line);
 		map[h] = line;
 		h++;
 	}
@@ -88,22 +87,29 @@ char	**store_all_line(char *filepath, char **map)
 
 char	**store_map_from_file(char *filepath)
 {
-	int		fd;
-	char	*line;
 	char	**map;
 	size_t	line_num;
 
 	line_num = count_line_num(filepath);
-	map = (char **)malloc(sizeof(char *) * line_num);
+	// ここのサイズが少なすぎてsegvを起こす。
+	// ダブルポインタにおける、map[1]はmap[0]からどれくらい離れているのかをみたい。
+	// → NULL止めの参照分のポインタのサイズを忘れていただけ +1して解決。
+	map = (char **)malloc(sizeof(char *) * (line_num + 1));
+	map = store_all_line(filepath, map);
+	// print_map(map);
 
+	return (map);
 }
 
 
 int	main()
 {
 	char **map;
-	char *filepath = "files/one_line";
+	char *filepath = "files/5_line";
 
-	store_all_line(filepath, map);
+	map = store_map_from_file(filepath);
+	free_all(NULL, map);
+	system("leaks a.out");
+	// print_map(map);
 	return (0);
 }
