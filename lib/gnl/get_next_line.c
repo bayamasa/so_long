@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 09:49:17 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/13 17:05:43 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/13 22:54:56 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*read_buffering(char **text, int *status, ssize_t text_len)
 	index = ft_strchr_index(*text, '\n');
 	if (index != -1)
 	{
-		tmp = ft_substr(*text, index + 1, text_len - (index + 1));
+		tmp = ft_substr(*text, index + 1, text_len - (index + 1), status);
 		if (tmp != NULL)
 		{
 			(*text)[index + 1] = '\0';
@@ -40,7 +40,7 @@ char	*read_buffering(char **text, int *status, ssize_t text_len)
 	return (ret);
 }
 
-char	*finish(char **text, char *read_res)
+char	*finish(char **text, char *read_res, int *status)
 {
 	ssize_t	index;
 	char	*ret;
@@ -57,7 +57,7 @@ char	*finish(char **text, char *read_res)
 	if (index == -1)
 	{
 		if (text_len != 0)
-			ret = ft_strdup(*text);
+			ret = ft_strdup(*text, status);
 		else
 			free(*text);
 		*text = NULL;
@@ -86,7 +86,7 @@ char	*ret_nl(char *read_res, char **text, int *status, char *tmp)
 	}
 	if (tmp_len == 0 || *text != NULL)
 		return (read_res);
-	*text = ft_strdup(tmp);
+	*text = ft_strdup(tmp, status);
 	if (*text != NULL)
 		return (read_res);
 	free(read_res);
@@ -104,7 +104,7 @@ char	*store_buffer(char *read_res, char **text, int *status, ssize_t res_len)
 		while (read_res[res_len] != '\0')
 			res_len++;
 		tmp = ft_substr(read_res, ft_strchr_index(read_res, '\n') + 1, \
-			res_len - (ft_strchr_index(read_res, '\n') + 1));
+			res_len - (ft_strchr_index(read_res, '\n') + 1), status);
 		if (tmp != NULL)
 		{	
 			read_res[ft_strchr_index(read_res, '\n') + 1] = '\0';
@@ -114,7 +114,7 @@ char	*store_buffer(char *read_res, char **text, int *status, ssize_t res_len)
 		return (NULL);
 	}
 	if (*text == NULL)
-		*text = ft_strdup(read_res);
+		*text = ft_strdup(read_res, status);
 	else
 		*text = ft_strjoin(*text, read_res);
 	if (*text == NULL)
@@ -122,30 +122,29 @@ char	*store_buffer(char *read_res, char **text, int *status, ssize_t res_len)
 	return (NULL);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int *status)
 {
 	static char	*text;
 	char		*ret;
 	char		*read_res;
 	ssize_t		read_count;
-	int			status;
 
 	if (BUFFER_SIZE <= 0)
 		return (NULL);
 	read_count = 0;
-	ret = read_buffering(&text, &status, read_count);
+	ret = read_buffering(&text, status, read_count);
 	while (1)
 	{
-		if (status == -1 && ret == NULL)
+		if (*status == -1 && ret == NULL)
 			return (NULL);
-		if (status == 1 && ret != NULL)
+		if (*status == 1 && ret != NULL)
 			return (ret);
 		read_res = NULL;
 		read_res = (char *)malloc(sizeof(char) * (size_t)BUFFER_SIZE + 1);
 		read_count = read(fd, read_res, BUFFER_SIZE);
 		if (read_count <= 0)
-			return (finish(&text, read_res));
+			return (finish(&text, read_res, status));
 		*(read_res + read_count) = '\0';
-		ret = store_buffer(read_res, &text, &status, read_count);
+		ret = store_buffer(read_res, &text, status, read_count);
 	}
 }

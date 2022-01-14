@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   get_next_line_utils_2.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/18 17:32:26 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/13 22:31:18 by mhirabay         ###   ########.fr       */
+/*   Created: 2022/01/13 22:52:24 by mhirabay          #+#    #+#             */
+/*   Updated: 2022/01/13 22:53:39 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "get_next_line.h"
 
-char	*ft_strdup(const char *src, int *status)
+size_t	ft_strlen(const char *str)
 {
-	size_t		i;
-	size_t		len;
-	char		*dest;
+	size_t	i;
 
-	if (src == NULL)
-		return (NULL);
 	i = 0;
-	len = ft_strlen(src);
-	dest = (char *)malloc(sizeof(char) * (len + 1));
-	if (dest == NULL)
+	while (str[i] != '\0')
 	{
-		return (NULL);
-	}
-	while (i < len)
-	{
-		dest[i] = src[i];
 		i++;
 	}
-	dest[i] = '\0';
-	return (dest);
+	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 09:55:27 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/13 16:44:03 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/13 22:53:51 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,16 @@
 # endif
 
 char	*read_buffering(char **text, int *status, ssize_t text_len);
-char	*get_next_line(int fd);
+char	*get_next_line(int fd, int *status);
 char	*store_buffer(	char *read_res, char **text, \
 						int *status, ssize_t res_len);
 char	*ret_nl(char *read_res, char **text, int *status, char *tmp);
-char	*finish(char **text, char *read_res);
+char	*finish(char **text, char *read_res, int *status);
 ssize_t	ft_strchr_index(const char *s, int c);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
+size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
-char	*ft_substr(char *s, unsigned int start, size_t len);
-char	*ft_strdup(char *src);
+char	*ft_substr(char *s, unsigned int start, size_t len, int *status);
+char	*ft_strdup(char *src, int *status);
 
 #endif
