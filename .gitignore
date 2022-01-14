@@ -6,3 +6,5 @@
 # !*.xpm
 # !*.h
 # !Makefile
+*.o
+*.a
