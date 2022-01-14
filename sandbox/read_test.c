@@ -109,7 +109,6 @@ int	main()
 
 	map = store_map_from_file(filepath);
 	free_all(NULL, map);
-	system("leaks a.out");
 	// print_map(map);
 	return (0);
 }
