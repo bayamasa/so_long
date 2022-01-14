@@ -1,4 +1,4 @@
-#include "mlx/mlx.h"
+#include "lib/mlx/mlx.h"
 
 typedef struct	s_data {
 	void	*img;
@@ -30,6 +30,6 @@ int	main(void)
 	mlx_put_image_to_window(mlx, mlx_win, wall.img, 0, 0);
 	mlx_put_image_to_window(mlx, mlx_win, wall.img, 50, 0);
 
-	mlx_put_image_to_window(mlx, mlx_win, chara.img, 50, 50);
+	mlx_put_image_to_window(mlx, mlx_win, chara.img, 50, 0);
 	mlx_loop(mlx);
 }

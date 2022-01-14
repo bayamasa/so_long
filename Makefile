@@ -1,5 +1,5 @@
 all:	
-	gcc -L mlx -lmlx -framework OpenGL -framework AppKit main.c -o main
+	gcc -L lib/mlx -lmlx -framework OpenGL -framework AppKit main.c -o main
 	./main
 
 clean: 

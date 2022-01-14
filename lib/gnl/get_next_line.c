@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 09:49:17 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/13 22:54:56 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/14 10:22:46 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*read_buffering(char **text, int *status, ssize_t text_len)
 	index = ft_strchr_index(*text, '\n');
 	if (index != -1)
 	{
-		tmp = ft_substr(*text, index + 1, text_len - (index + 1), status);
+		tmp = ft_substr_gnl(*text, index + 1, text_len - (index + 1), status);
 		if (tmp != NULL)
 		{
 			(*text)[index + 1] = '\0';
@@ -57,7 +57,7 @@ char	*finish(char **text, char *read_res, int *status)
 	if (index == -1)
 	{
 		if (text_len != 0)
-			ret = ft_strdup(*text, status);
+			ret = ft_strdup_gnl(*text, status);
 		else
 			free(*text);
 		*text = NULL;
@@ -76,7 +76,7 @@ char	*ret_nl(char *read_res, char **text, int *status, char *tmp)
 		free(tmp);
 	if (*text != NULL)
 	{	
-		read_res = ft_strjoin(*text, read_res);
+		read_res = ft_strjoin_gnl(*text, read_res);
 		if (read_res == NULL)
 			*status = -1;
 		if (tmp_len == 0)
@@ -86,7 +86,7 @@ char	*ret_nl(char *read_res, char **text, int *status, char *tmp)
 	}
 	if (tmp_len == 0 || *text != NULL)
 		return (read_res);
-	*text = ft_strdup(tmp, status);
+	*text = ft_strdup_gnl(tmp, status);
 	if (*text != NULL)
 		return (read_res);
 	free(read_res);
@@ -103,7 +103,7 @@ char	*store_buffer(char *read_res, char **text, int *status, ssize_t res_len)
 	{
 		while (read_res[res_len] != '\0')
 			res_len++;
-		tmp = ft_substr(read_res, ft_strchr_index(read_res, '\n') + 1, \
+		tmp = ft_substr_gnl(read_res, ft_strchr_index(read_res, '\n') + 1, \
 			res_len - (ft_strchr_index(read_res, '\n') + 1), status);
 		if (tmp != NULL)
 		{	
@@ -114,9 +114,9 @@ char	*store_buffer(char *read_res, char **text, int *status, ssize_t res_len)
 		return (NULL);
 	}
 	if (*text == NULL)
-		*text = ft_strdup(read_res, status);
+		*text = ft_strdup_gnl(read_res, status);
 	else
-		*text = ft_strjoin(*text, read_res);
+		*text = ft_strjoin_gnl(*text, read_res);
 	if (*text == NULL)
 		*status = -1;
 	return (NULL);

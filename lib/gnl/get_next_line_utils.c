@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/28 09:38:08 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/13 22:51:32 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/14 10:21:00 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_substr_gnl(char *s, unsigned int start, size_t len, int *status)
 		size++;
 	if (size < start)
 	{
-		return (ft_strdup("", status));
+		return (ft_strdup_gnl("", status));
 	}
 	if (size < len)
 		len = size;
@@ -34,11 +34,11 @@ char	*ft_substr_gnl(char *s, unsigned int start, size_t len, int *status)
 		free(s);
 		return (NULL);
 	}
-	ft_strlcpy(str, s + start, len + 1);
+	ft_strlcpy_gnl(str, s + start, len + 1);
 	return (str);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin_gnl(char const *s1, char const *s2)
 {
 	char	*new_str;
 	size_t	s1_len;
@@ -59,15 +59,15 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		free((char *)s2);
 		return (NULL);
 	}
-	ft_strlcpy(new_str, s1, s1_len + 1);
-	ft_strlcpy(new_str + s1_len, s2, s1_len + s2_len + 1);
+	ft_strlcpy_gnl(new_str, s1, s1_len + 1);
+	ft_strlcpy_gnl(new_str + s1_len, s2, s1_len + s2_len + 1);
 	free((char *)s1);
 	free((char *)s2);
 	s1 = NULL;
 	return (new_str);
 }
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy_gnl(char *dest, const char *src, size_t size)
 {
 	size_t	i;
 
@@ -107,7 +107,7 @@ ssize_t	ft_strchr_index(const char *s, int c)
 	return (-1);
 }
 
-char	*ft_strdup(char *src, int *status)
+char	*ft_strdup_gnl(char *src, int *status)
 {
 	size_t		i;
 	size_t		len;
@@ -117,7 +117,7 @@ char	*ft_strdup(char *src, int *status)
 	if (src == NULL)
 		return (NULL);
 	i = 0;
-	len = ft_strlen(src);
+	len = ft_strlen_gnl(src);
 	dest = (char *)malloc(sizeof(char) * (len + 1));
 	if (dest == NULL)
 	{
