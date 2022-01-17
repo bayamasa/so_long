@@ -6,112 +6,74 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 17:01:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/16 17:15:01 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/17 14:32:18 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-size_t	count_line_num(char *filepath)
+t_map	init_map_img(void *mlx)
 {
-	size_t	i;
-	char	*line;
-	int		status;
-	int		fd;
+	t_map	m;
 
-	fd = open(filepath, O_RDONLY);
-	if (fd == -1)
-		abort_so_long(NULL, NULL);
-	i = 0;
-	status = true;
-	line = get_next_line(fd, &status);
-	if (status == false)
-		abort_so_long(line, NULL);
-	while (line != NULL)
-	{
-		free(line);
-		line = get_next_line(fd, &status);
-		if (status == false)
-			abort_so_long(line, NULL);
-		i++;
-	}
-	close(fd);
-	return (i);
+	m.chara.path = CHARA_PATH;
+	m.wall.path = WALL_PATH;
+	m.floor.path = FLOOR_PATH;
+	m.collective.path = COLLECTIVE_PATH;
+	m.exit.path = EXIT_PATH;
+	m.chara.img = mlx_xpm_file_to_image(mlx, \
+		m.chara.path, &m.chara.width, &m.chara.height);
+	m.wall.img = mlx_xpm_file_to_image(mlx, \
+		m.wall.path, &m.wall.width, &m.wall.height);
+	m.floor.img = mlx_xpm_file_to_image(mlx, \
+		m.floor.path, &m.floor.width, &m.floor.height);
+	m.collective.img = mlx_xpm_file_to_image(mlx, \
+		m.collective.path, &m.collective.width, &m.collective.height);
+	m.exit.img = mlx_xpm_file_to_image(mlx, \
+		m.exit.path, &m.exit.width, &m.exit.height);
+	return (m);
 }
 
-int	validate(char **map, int line_num)
+void	put_image(t_data data, int width, int height, char map_attr)
 {
-	int	status;
-
-	if (is_line_same_length(map, line_num))
+	if (map_attr == '1')
+		mlx_put_image_to_window(data.mlx, \
+			data.mlx_win, data.map.wall.img, width, height);
+	if (map_attr == '0')
+		mlx_put_image_to_window(data.mlx, \
+			data.mlx_win, data.map.floor.img, width, height);
+	if (map_attr == 'P')
 	{
-		if (is_top_and_end_only_wall(map, line_num))
-		{
-			if (is_area_surrounded_wall(map, line_num))
-			{
-				if (is_valid_area(map, line_num))
-				{
-					return (true);
-				}
-				printf("area\n");
-			}
-			printf("surrond_wall\n");
-		}
-		printf("top_end\n");
+		mlx_put_image_to_window(data.mlx, \
+			data.mlx_win, data.map.floor.img, width, height);
+		mlx_put_image_to_window(data.mlx, \
+			data.mlx_win, data.map.chara.img, width, height);
 	}
-	printf("line_same_length\n");
-	return (false);
+	if (map_attr == 'C')
+		mlx_put_image_to_window(data.mlx, \
+			data.mlx_win, data.map.collective.img, width, height);
+	if (map_attr == 'E')
+		mlx_put_image_to_window(data.mlx, \
+			data.mlx_win, data.map.exit.img, width, height);
 }
 
-char	**store_map_from_file(char *filepath)
+void	put_pixel_by(char **map, t_data data)
 {
-	char	**map;
-	size_t	line_num;
-	int		status;
+	size_t	w;
+	size_t	h;
 
-	status = 0;
-	line_num = count_line_num(filepath);
-	map = (char **)malloc(sizeof(char *) * (line_num + 1));
-	map = store_all_line(filepath, map);
-	status = validate(map, line_num);
-	if (status == false)
-	{
-		printf("validate_error\n");
-		abort_so_long(NULL, map);
-	}
-	return (map);
-}
-
-char	**store_all_line(char *filepath, char **map)
-{
-	int		fd;
-	char	*line;
-	int		status;
-	int		h;
-
+	w = 0;
 	h = 0;
-	status = true;
-	fd = open(filepath, O_RDONLY);
-	if (fd == -1)
-		abort_so_long(NULL, map);
-	while (true)
+	data.map = init_map_img(data.mlx);
+	print_map(map);
+	while (map[h] != NULL)
 	{
-		line = get_next_line(fd, &status);
-		if (status == false)
-			abort_so_long(line, map);
-		if (line == NULL)
+		w = 0;
+		while (map[h][w] != '\n' && map[h][w] != '\0')
 		{
-			map[h] = NULL;
-			break ;
+			put_image(data, w * PIXEL_WIDTH, h * PIXEL_HEIGHT, map[h][w]);
+			w++;
 		}
-		map[h] = line;
 		h++;
 	}
-	return (map);
 }
-
-void	put_pixel_by(char **map)
-{
-	
-}
-
