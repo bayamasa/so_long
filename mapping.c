@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 17:01:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/17 14:32:18 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/17 15:21:55 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,37 +34,37 @@ t_map	init_map_img(void *mlx)
 	return (m);
 }
 
-void	put_image(t_data data, int width, int height, char map_attr)
+void	put_image(t_data *data, int width, int height, char map_attr)
 {
 	if (map_attr == '1')
-		mlx_put_image_to_window(data.mlx, \
-			data.mlx_win, data.map.wall.img, width, height);
+		mlx_put_image_to_window(data->mlx, \
+			data->mlx_win, data->map.wall.img, width, height);
 	if (map_attr == '0')
-		mlx_put_image_to_window(data.mlx, \
-			data.mlx_win, data.map.floor.img, width, height);
+		mlx_put_image_to_window(data->mlx, \
+			data->mlx_win, data->map.floor.img, width, height);
 	if (map_attr == 'P')
 	{
-		mlx_put_image_to_window(data.mlx, \
-			data.mlx_win, data.map.floor.img, width, height);
-		mlx_put_image_to_window(data.mlx, \
-			data.mlx_win, data.map.chara.img, width, height);
+		mlx_put_image_to_window(data->mlx, \
+			data->mlx_win, data->map.floor.img, width, height);
+		mlx_put_image_to_window(data->mlx, \
+			data->mlx_win, data->map.chara.img, width, height);
 	}
 	if (map_attr == 'C')
-		mlx_put_image_to_window(data.mlx, \
-			data.mlx_win, data.map.collective.img, width, height);
+		mlx_put_image_to_window(data->mlx, \
+			data->mlx_win, data->map.collective.img, width, height);
 	if (map_attr == 'E')
-		mlx_put_image_to_window(data.mlx, \
-			data.mlx_win, data.map.exit.img, width, height);
+		mlx_put_image_to_window(data->mlx, \
+			data->mlx_win, data->map.exit.img, width, height);
 }
 
-void	put_pixel_by(char **map, t_data data)
+void	put_pixel_by(char **map, t_data *data)
 {
 	size_t	w;
 	size_t	h;
 
 	w = 0;
 	h = 0;
-	data.map = init_map_img(data.mlx);
+	data->map = init_map_img(data->mlx);
 	print_map(map);
 	while (map[h] != NULL)
 	{

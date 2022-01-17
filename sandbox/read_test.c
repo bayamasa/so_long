@@ -44,11 +44,6 @@ void	print_map(char **map)
 	while (map[i] != NULL)
 	{
 		printf("one_line : %s\n", map[i]);
-		// while (map[i][j] != '\n' && map[i][j] != '\0')
-		// {
-		// 	printf("map[i][j] = %c\n", map[i][j]);
-		// 	j++;
-		// }
 		i++;
 	}
 }
