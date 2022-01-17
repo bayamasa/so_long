@@ -6,13 +6,26 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:02:44 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/17 17:17:23 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/17 19:51:25 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	move_chara(int keycode, void *data)
+
+
+int	is_wall_in_the_direction(int code, t_data d)
+{
+	
+}
+
+
+void	rerender_player(int code, t_data d)
+{
+	
+}
+
+int	move_chara_hook(int keycode, void *data)
 {
 	t_data	*d;
 	char	*addr;
@@ -21,7 +34,6 @@ int	move_chara(int keycode, void *data)
 	int		endian;
 
 	d = (t_data *)data;
-		
 	// addr = mlx_get_data_addr(d->map.wall.img, &bits_per_pixel, &line_length, &endian);
 	// printf("addr : %s\n", addr);
 	// printf("bits_per_pixel = %d\n", bits_per_pixel);
@@ -35,19 +47,22 @@ int	move_chara(int keycode, void *data)
 	if (keycode == KEY_W)
 	{
 		printf("W pressed\n");
+		rerender_player(UP, *d);
 	}
 	else if (keycode == KEY_S)
 	{
 		printf("S pressed\n");
-		
+		rerender_player(UP, *d);
 	}
 	else if (keycode == KEY_A)
 	{
 		printf("A pressed\n");
+		rerender_player(UP, *d);
 	}
 	else if (keycode == KEY_D)
 	{
 		printf("D pressed\n");
+		rerender_player(UP, *d);
 	}
 	else if (keycode == KEY_ESC)
 		exit(0);
@@ -65,11 +80,10 @@ int	main(void)
 	//strcatで結合するよてい
 	filepath = "map/test.ber";
 	map = store_map_from_file(filepath);
-	// data = (t_data *)malloc(sizeof(t_data));
 	data.mlx = mlx_init();
 	data.mlx_win = mlx_new_window(data.mlx, 400, 400, "so_long");
 	data = put_pixel_by(map, data);
-	mlx_hook(data.mlx_win, X_EVENT_KEY_PRESS, 0, move_chara, &data);
+	mlx_hook(data.mlx_win, X_EVENT_KEY_PRESS, 0, move_chara_hook, &data);
 	mlx_loop(data.mlx);
 	// free_all(NULL, map);
 }

@@ -8,7 +8,7 @@
 # include <fcntl.h>
 # include "lib/ft_printf/ft_printf.h"
 # include "lib/gnl/get_next_line.h"
-# include "map.h"
+# include "obj.h"
 # include "lib/mlx/mlx.h"
 
 # define X_EVENT_KEY_PRESS	2
@@ -21,12 +21,18 @@
 # define KEY_S			1
 # define KEY_D			2
 
+# define UP 0
+# define DOWN 1
+# define RIGHT 2
+# define LEFT 3
+
 # define ERROR "Error\n"
 
 typedef struct s_data {
 	void	*mlx;
 	void	*mlx_win;
-	t_map	map;
+	t_obj	obj;
+	char	**map;
 }		t_data;
 
 void	abort_so_long(char *line, char **map);
@@ -44,7 +50,7 @@ char	**store_map_from_file(char *filepath);
 char	**store_all_line(char *filepath, char **map);
 t_data	put_pixel_by(char **map, t_data data);
 void	print_map(char **map);
-t_map	init_map_img(void *mlx);
+t_obj	init_map_img(void *mlx);
 void	put_image(t_data data, int width, int height, char map_attr);
 
 #endif
