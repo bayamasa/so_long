@@ -6,14 +6,14 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 09:09:36 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/17 19:52:04 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/17 20:16:40 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef OBJ_H
 # define OBJ_H
 
-# define CHARA_PATH "./img/chara.xpm"
+# define PLAYER_PATH "./img/player.xpm"
 # define WALL_PATH "./img/wall.xpm"
 # define FLOOR_PATH "./img/floor.xpm"
 # define COLLECTIVE_PATH "./img/collective.xpm"

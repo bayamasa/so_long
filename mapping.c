@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 17:01:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/17 19:52:30 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/17 20:18:51 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_obj	init_map_img(void *mlx)
 {
 	t_obj	o;
 
-	o.player.path = CHARA_PATH;
+	o.player.path = PLAYER_PATH;
 	o.wall.path = WALL_PATH;
 	o.floor.path = FLOOR_PATH;
 	o.collective.path = COLLECTIVE_PATH;
@@ -65,7 +65,6 @@ t_data	put_pixel_by(char **map, t_data data)
 	w = 0;
 	h = 0;
 	data.obj = init_map_img(data.mlx);
-	print_map(map);
 	while (map[h] != NULL)
 	{
 		w = 0;
