@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:02:44 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/18 09:12:03 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/18 11:02:09 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,9 @@ int	is_wall_in_the_direction(int code, t_data d)
 
 	get_player_grid(d.map, &x, &y);
 	if (code == UP)
-		// x座標そのまま。y座標一つ上
 		if (d.map[y - 1][x] == '1')
 			return (true);
 	if (code == DOWN)
-		// x座標そのまま。y座標一つ上
 		if (d.map[y + 1][x] == '1')
 			return (true);
 	if (code == RIGHT)
@@ -54,6 +52,48 @@ int	is_wall_in_the_direction(int code, t_data d)
 			return (true);
 	if (code == LEFT)
 		if (d.map[y][x - 1] == '1')
+			return (true);
+	return (false);
+}
+
+int	is_present_in_the_direction(int code, t_data d)
+{
+	int	x;
+	int	y;
+
+	get_player_grid(d.map, &x, &y);
+	if (code == UP)
+		if (d.map[y - 1][x] == 'C')
+			return (true);
+	if (code == DOWN)
+		if (d.map[y + 1][x] == 'C')
+			return (true);
+	if (code == RIGHT)
+		if (d.map[y][x + 1] == 'C')
+			return (true);
+	if (code == LEFT)
+		if (d.map[y][x - 1] == 'C')
+			return (true);
+	return (false);
+}
+
+int	is_exit_in_the_direction(int code, t_data d)
+{
+	int	x;
+	int	y;
+
+	get_player_grid(d.map, &x, &y);
+	if (code == UP)
+		if (d.map[y - 1][x] == 'E')
+			return (true);
+	if (code == DOWN)
+		if (d.map[y + 1][x] == 'E')
+			return (true);
+	if (code == RIGHT)
+		if (d.map[y][x + 1] == 'E')
+			return (true);
+	if (code == LEFT)
+		if (d.map[y][x - 1] == 'E')
 			return (true);
 	return (false);
 }
@@ -81,8 +121,6 @@ void	rerender_player(int code, t_data *d)
 	int	y;
 
 	get_player_grid(d->map, &x, &y);
-	// printf("x = %d\n", x);
-	// printf("y = %d\n", y);
 	mlx_put_image_to_window(d->mlx, \
 			d->mlx_win, d->obj.floor.img, x * 50, y * 50);
 	if (code == UP)
@@ -105,12 +143,31 @@ int	move_player_hook(int keycode, void *data)
 	t_data	*d;
 
 	d = (t_data *)data;
+	d->obj.player.collect_count = 0;
 	if (keycode == KEY_ESC)
 		exit(0);
 	if (keycode == KEY_W)
 	{
 		if (!is_wall_in_the_direction(UP, *d))
 		{
+			if (is_present_in_the_direction(UP, *d))
+			{
+				d->obj.player.collect_count++;
+				printf("present collect!\n");
+			}
+			if (is_exit_in_the_direction(UP, *d))
+			{
+				if (d->obj.present.num_in_map == 0)
+				{
+					printf("player GOAL\n");
+					exit(0);
+				}
+				else
+				{
+					printf("player need to collect present\n");
+					return (0);
+				}
+			}
 			printf("player UP\n");
 			rerender_player(UP, d);
 		}
@@ -119,6 +176,24 @@ int	move_player_hook(int keycode, void *data)
 	{
 		if (!is_wall_in_the_direction(DOWN, *d))
 		{
+			if (is_present_in_the_direction(DOWN, *d))
+			{
+				d->obj.player.collect_count++;
+				printf("present collect!\n");
+			}
+			if (is_exit_in_the_direction(DOWN, *d))
+			{
+				if (d->obj.present.num_in_map == 0)
+				{
+					printf("player GOAL\n");
+					exit(0);
+				}
+				else
+				{
+					printf("player need to collect present\n");
+					return (0);
+				}
+			}
 			printf("player DOWN\n");
 			rerender_player(DOWN, d);
 		}
@@ -127,6 +202,24 @@ int	move_player_hook(int keycode, void *data)
 	{
 		if (!is_wall_in_the_direction(LEFT, *d))
 		{
+			if (is_present_in_the_direction(LEFT, *d))
+			{
+				d->obj.player.collect_count++;
+				printf("present collect!\n");
+			}
+			if (is_exit_in_the_direction(LEFT, *d))
+			{
+				if (d->obj.present.num_in_map == 0)
+				{
+					printf("player GOAL\n");
+					exit(0);
+				}
+				else
+				{
+					printf("player need to collect present\n");
+					return (0);
+				}
+			}
 			printf("player LEFT\n");
 			rerender_player(LEFT, d);
 		}
@@ -135,12 +228,32 @@ int	move_player_hook(int keycode, void *data)
 	{
 		if (!is_wall_in_the_direction(RIGHT, *d))
 		{
+			if (is_present_in_the_direction(RIGHT, *d))
+			{
+				d->obj.player.collect_count++;
+				printf("present collect!\n");
+			}
+			if (is_exit_in_the_direction(RIGHT, *d))
+			{
+				if (d->obj.present.num_in_map == 0)
+				{
+					printf("player GOAL\n");
+					exit(0);
+				}
+				else
+				{
+					printf("player need to collect present\n");
+					return (0);
+				}
+			}
 			printf("player RIGHT\n");
 			rerender_player(RIGHT, d);
 		}
 	}
 	printf("hook_end\n");
 	print_map(d->map);
+	store_present_num(d, (*d).map);
+	printf("d->obj.present.num_in_map = %zu\n", d->obj.present.num_in_map);
 	return (0);
 }
 
@@ -156,7 +269,7 @@ int	main(void)
 	filepath = "map/normal.ber";
 	data.map = store_map_from_file(filepath);
 	data.mlx = mlx_init();
-	data.mlx_win = mlx_new_window(data.mlx, 400, 400, "so_long");
+	data.mlx_win = mlx_new_window(data.mlx, 800, 800, "so_long");
 	data = put_pixel_by(data.map, data);
 	mlx_hook(data.mlx_win, X_EVENT_KEY_PRESS, 0, move_player_hook, &data);
 	mlx_loop(data.mlx);

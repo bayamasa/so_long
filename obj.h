@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 09:09:36 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/18 09:27:24 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/18 09:43:23 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_player
 	char	*path;
 	int		width;
 	int		height;
+	size_t	collect_count;
 }		t_player;
 
 typedef struct s_wall
@@ -51,6 +52,7 @@ typedef struct s_present
 	char	*path;
 	int		width;
 	int		height;
+	size_t	num_in_map;
 }		t_present;
 
 typedef struct s_exit
@@ -63,11 +65,11 @@ typedef struct s_exit
 
 typedef struct s_obj
 {
-	t_player		player;
-	t_wall			wall;
-	t_floor			floor;
+	t_player	player;
+	t_wall		wall;
+	t_floor		floor;
 	t_present	present;
-	t_exit			exit;
+	t_exit		exit;
 }		t_obj;
 
 #endif

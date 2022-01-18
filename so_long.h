@@ -52,5 +52,5 @@ t_data	put_pixel_by(char **map, t_data data);
 void	print_map(char **map);
 t_obj	init_map_img(void *mlx);
 void	put_image(t_data data, int width, int height, char map_attr);
-
+void	store_present_num(t_data *d, char **map);
 #endif
