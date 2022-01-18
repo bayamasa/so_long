@@ -14,14 +14,11 @@
 # define X_EVENT_KEY_PRESS	2
 # define X_EVENT_KEY_EXIT	17
 
-# define KEY_ESC		53
-# define KEY_Q			12
-# define KEY_W			13
-# define KEY_E			14
-# define KEY_R			15
-# define KEY_A			0
-# define KEY_S			1
-# define KEY_D			2
+# define KEY_ESC		65307
+# define KEY_W			119
+# define KEY_A			97
+# define KEY_S			115
+# define KEY_D			100
 
 # define UP 0
 # define DOWN 1
@@ -35,8 +32,8 @@ typedef struct s_data {
 	void	*mlx_win;
 	t_obj	obj;
 	char	**map;
-	int		screen_width;
-	int		screen_height;
+	int		win_w;
+	int		win_h;
 }		t_data;
 
 void	abort_so_long(char *line, char **map);

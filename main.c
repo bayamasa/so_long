@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:02:44 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/18 16:04:35 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/18 17:59:27 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,14 @@ int	main(void)
 	t_data	data;
 	char	*filepath;
 	char	**map;
-	void 	*mlx;
-	void 	*mlx_win;
 
 	//strcatで結合するよてい
-	filepath = "map/normal.ber";
+	filepath = "map/big.ber";
 	data = store_map_from_file(filepath);
 	data.mlx = mlx_init();
-	data.mlx_win = mlx_new_window(data.mlx, data.screen_width, data.screen_height, "so_long");
+	data.mlx_win = mlx_new_window(data.mlx, data.win_w, data.win_h, "so_long");
 	data = put_pixel_by(data.map, data);
-	mlx_hook(data.mlx_win, X_EVENT_KEY_PRESS, 0, do_player_keyhook, &data);
+	mlx_key_hook(data.mlx_win, do_player_keyhook, &data);
 	mlx_hook(data.mlx_win, X_EVENT_KEY_EXIT, 0, exit_game, &data);
 	mlx_loop(data.mlx);
 	// free_all(NULL, map);

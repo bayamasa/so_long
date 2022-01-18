@@ -10,3 +10,4 @@
 *.a
 a.out
 .vscode/**
+mlx_bk/**

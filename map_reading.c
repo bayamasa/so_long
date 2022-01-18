@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 10:54:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/18 16:06:13 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/18 17:31:48 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,9 @@ t_data	store_map_from_file(char *filepath)
 		abort_so_long(NULL, map);
 	}
 	data.map = map;
-	data.screen_width = (len - 1) * PIXEL_WIDTH;
-	data.screen_height = line_num * PIXEL_HEIGHT;
+	// ここでoverflow起こす値を入れるとバグる
+	data.win_w = (len - 1) * PIXEL_WIDTH;
+	data.win_h = line_num * PIXEL_HEIGHT;
 	return (data);
 }
 
