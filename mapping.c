@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 17:01:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/17 20:18:51 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/18 09:32:50 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_obj	init_map_img(void *mlx)
 	o.player.path = PLAYER_PATH;
 	o.wall.path = WALL_PATH;
 	o.floor.path = FLOOR_PATH;
-	o.collective.path = COLLECTIVE_PATH;
+	o.present.path = PRESENT_PATH;
 	o.exit.path = EXIT_PATH;
 	o.player.img = mlx_xpm_file_to_image(mlx, \
 		o.player.path, &o.player.width, &o.player.height);
@@ -27,8 +27,8 @@ t_obj	init_map_img(void *mlx)
 		o.wall.path, &o.wall.width, &o.wall.height);
 	o.floor.img = mlx_xpm_file_to_image(mlx, \
 		o.floor.path, &o.floor.width, &o.floor.height);
-	o.collective.img = mlx_xpm_file_to_image(mlx, \
-		o.collective.path, &o.collective.width, &o.collective.height);
+	o.present.img = mlx_xpm_file_to_image(mlx, \
+		o.present.path, &o.present.width, &o.present.height);
 	o.exit.img = mlx_xpm_file_to_image(mlx, \
 		o.exit.path, &o.exit.width, &o.exit.height);
 	return (o);
@@ -51,7 +51,7 @@ void	put_image(t_data data, int width, int height, char map_attr)
 	}
 	if (map_attr == 'C')
 		mlx_put_image_to_window(data.mlx, \
-			data.mlx_win, data.obj.collective.img, width, height);
+			data.mlx_win, data.obj.present.img, width, height);
 	if (map_attr == 'E')
 		mlx_put_image_to_window(data.mlx, \
 			data.mlx_win, data.obj.exit.img, width, height);

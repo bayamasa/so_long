@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 09:09:36 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/17 20:16:40 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/18 09:27:24 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define PLAYER_PATH "./img/player.xpm"
 # define WALL_PATH "./img/wall.xpm"
 # define FLOOR_PATH "./img/floor.xpm"
-# define COLLECTIVE_PATH "./img/collective.xpm"
+# define PRESENT_PATH "./img/present.xpm"
 # define EXIT_PATH "./img/exit.xpm"
 # define PIXEL_WIDTH 50
 # define PIXEL_HEIGHT 50
@@ -45,13 +45,13 @@ typedef struct s_floor
 	int		height;
 }		t_floor;
 
-typedef struct s_collective
+typedef struct s_present
 {
 	void	*img;
 	char	*path;
 	int		width;
 	int		height;
-}		t_collective;
+}		t_present;
 
 typedef struct s_exit
 {
@@ -66,7 +66,7 @@ typedef struct s_obj
 	t_player		player;
 	t_wall			wall;
 	t_floor			floor;
-	t_collective	collective;
+	t_present	present;
 	t_exit			exit;
 }		t_obj;
 

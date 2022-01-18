@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:02:44 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/17 21:04:03 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/18 09:12:03 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ int	main(void)
 	void 	*mlx_win;
 
 	//strcatで結合するよてい
-	filepath = "map/test.ber";
+	filepath = "map/normal.ber";
 	data.map = store_map_from_file(filepath);
 	data.mlx = mlx_init();
 	data.mlx_win = mlx_new_window(data.mlx, 400, 400, "so_long");
