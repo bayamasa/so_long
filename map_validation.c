@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_validation_func.c                              :+:      :+:    :+:   */
+/*   map_validation.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 17:05:34 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/16 17:08:48 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/18 15:45:47 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	is_line_same_length(char **map, int line_num)
+int	is_line_same_length(char **map, int line_num, size_t *top_len)
 {
 	size_t	w;
 	size_t	h;
-	size_t	top_len;
 	size_t	len;
 
 	w = 0;
 	h = 0;
-	top_len = ft_strlen(map[h++]);
+	*top_len = ft_strlen(map[h++]);
 	while (h < line_num)
 	{
 		len = ft_strlen(map[h]);
 		if (h == line_num - 1)
 		{
-			if (top_len != len + 1)
+			if (*top_len != len + 1)
 				return (false);
 		}
 		else
 		{
-			if (top_len != len)
+			if (*top_len != len)
 				return (false);
 		}
 		h++;
