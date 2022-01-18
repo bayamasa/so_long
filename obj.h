@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 09:09:36 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/18 09:43:23 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/18 13:34:43 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@
 # define FLOOR_PATH "./img/floor.xpm"
 # define PRESENT_PATH "./img/present.xpm"
 # define EXIT_PATH "./img/exit.xpm"
+
+# define PLAYER 'P'
+# define WALL '1'
+# define FLOOR '0'
+# define PRESENT 'P'
+# define EXIT 'E'
+
 # define PIXEL_WIDTH 50
 # define PIXEL_HEIGHT 50
 

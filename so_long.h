@@ -53,4 +53,10 @@ void	print_map(char **map);
 t_obj	init_map_img(void *mlx);
 void	put_image(t_data data, int width, int height, char map_attr);
 void	store_present_num(t_data *d, char **map);
+void	get_player_grid(char **map, int *x, int *y);
+int		is_obj_in_the(int direction, t_data d, char obj);
+void	move_player_grid(int code, char **map, int x, int y);
+void	rerender_player(int code, t_data *d);
+void	process_player_action(int direction, t_data *data);
+
 #endif
