@@ -6,7 +6,7 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/17 09:45:32 by mhirabay          #+#    #+#              #
-#    Updated: 2022/01/19 09:40:05 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/01/19 14:17:52 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRCS = 	main.c \
 		map_reading.c \
 		error_handling.c \
 		map_validation.c \
+		map_valiidation_2.c \
 		mapping_pixel.c \
 		debug.c \
 		map_algo.c \

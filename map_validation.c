@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 17:05:34 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/19 13:59:24 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/19 14:17:39 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,24 +131,4 @@ int	is_valid_area(char **map, int line_num)
 	if (p_count == 1 && c_count >= 1 && e_count >= 1)
 		return (true);
 	return (false);
-}
-
-int	is_included(char *line, char chara)
-{
-	size_t	i;
-	size_t	len;
-	size_t	chara_count;
-
-	i = 0;
-	len = ft_strlen(line);
-	chara_count = 0;
-	while (i < len)
-	{
-		if (line[i] == chara)
-		{
-			chara_count++;
-		}
-		i++;
-	}
-	return (chara_count);
 }
