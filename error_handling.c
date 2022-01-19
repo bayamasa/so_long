@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 21:09:30 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/16 16:07:25 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/19 09:33:26 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,21 @@ void	abort_so_long(char *line, char **map)
 		free_all(line, map);
 	}
 	printf(ERROR);
+	exit(1);
+}
+
+void	print_error(void)
+{
+	ft_putstr_fd(ERROR, 2);
+}
+
+void	abort_sl_with_msg(char *line, char **map, char *msg)
+{
+	if (line != NULL || map != NULL)
+	{
+		free_all(line, map);
+	}
+	print_error();
+	ft_putstr_fd(msg, 2);
 	exit(1);
 }

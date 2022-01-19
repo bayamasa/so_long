@@ -10,6 +10,7 @@
 # include "lib/gnl/get_next_line.h"
 # include "obj.h"
 # include "lib/mlx/mlx.h"
+# include "error_msg.h"
 
 # define X_EVENT_KEY_PRESS	2
 # define X_EVENT_KEY_EXIT	17
@@ -60,5 +61,8 @@ void	move_player_grid(int code, char **map, int x, int y);
 void	rerender_player(int code, t_data *d);
 void	process_player_action(int direction, t_data *data);
 void	get_screen_size(t_data *data, size_t len, size_t line_num);
+
+void	abort_sl_with_msg(char *line, char **map, char *msg);
+void	print_error(void);
 
 #endif

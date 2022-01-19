@@ -6,7 +6,7 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/17 09:45:32 by mhirabay          #+#    #+#              #
-#    Updated: 2022/01/18 19:31:36 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/01/19 09:40:05 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ OPT_MLX = -I/usr/X11/include -Llib/mlx -lmlx_Darwin -L/usr/X11/include/../lib -l
 
 all:	
 	gcc  -Llib/gnl -lgnl -Llib/ft_printf -lftprintf ${OPT_MLX} ${SRCS} -o main
-	./main
 
 clean: 
 	rm -rf *.out

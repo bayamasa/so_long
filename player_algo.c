@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 13:50:37 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/18 13:51:02 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/19 10:47:04 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,5 @@ void	process_player_action(int direction, t_data *data)
 		}
 		rerender_player(direction, data);
 	}
+	store_present_num(data, (*data).map);
 }
