@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 10:52:52 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/17 10:52:57 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/19 16:09:10 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	print_map(char **map)
 {
 	int	i;
-	int	j;
 
 	i = 0;
 	while (map[i] != NULL)

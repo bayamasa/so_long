@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:02:44 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/19 14:32:21 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/19 17:11:34 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ int	do_player_keyhook(int keycode, void *data)
 
 	d = (t_data *)data;
 	if (keycode == KEY_ESC)
-		exit(0);
+	{
+		exit_game(keycode, d);
+	}
 	if (keycode == KEY_W)
 		process_player_action(UP, d);
 	if (keycode == KEY_S)
@@ -32,7 +34,28 @@ int	do_player_keyhook(int keycode, void *data)
 
 int	exit_game(int keycode, t_data *data)
 {
+	(void)keycode;
+	(void)data;
 	printf("process terminating...\n");
+	// free_all(NULL, data->map);
+	// if (data->obj.wall.img != NULL)
+	// 	mlx_destroy_image(data->mlx, data->obj.wall.img);
+	// if (data->obj.floor.img != NULL)
+	// 	mlx_destroy_image(data->mlx, data->obj.floor.img);
+	// if (data->obj.present.img != NULL)
+	// 	mlx_destroy_image(data->mlx, data->obj.present.img);
+	// if (data->obj.player.img != NULL)
+	// 	mlx_destroy_image(data->mlx, data->obj.player.img);
+	// if (data->obj.exit.img != NULL)
+	// 	mlx_destroy_image(data->mlx, data->obj.exit.img);
+	// if (data->mlx_win != NULL)
+	// 	mlx_destroy_window(data->mlx, data->mlx_win);
+	// if (data->mlx != NULL)
+	// {
+	// 	mlx_destroy_display(data->mlx);
+	// 	mlx_loop_end(data->mlx);
+	// }
+	system("leaks main");
 	exit(0);
 }
 
@@ -83,5 +106,7 @@ int	main(int argc, char *argv[])
 	mlx_key_hook(data.mlx_win, do_player_keyhook, &data);
 	mlx_hook(data.mlx_win, X_EVENT_KEY_EXIT, 0, exit_game, &data);
 	mlx_loop(data.mlx);
+	// loopの下にくることはどうしたってない。
 	// free_all(NULL, map);
+
 }

@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 10:54:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/19 14:45:26 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/19 16:06:25 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ size_t	count_line_num(char *filepath)
 	return (i);
 }
 
-int	validate(char **map, int line_num, size_t *top_len)
+int	validate(char **map, size_t line_num, size_t *top_len)
 {
 	if (has_invalid_attr(map))
 		abort_sl_with_msg(NULL, map, INVALID_ATTRIBUTE);

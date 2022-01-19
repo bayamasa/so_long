@@ -6,13 +6,13 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 17:05:34 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/19 14:17:39 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/19 16:08:32 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	is_map_rectangle(char **map, int line_num, size_t *top_len)
+int	is_map_rectangle(char **map, size_t line_num, size_t *top_len)
 {
 	size_t	w;
 	size_t	h;
@@ -52,11 +52,11 @@ int	has_invalid_attr(char **map)
 		while (map[h][w] != '\0' && map[h][w] != '\n')
 		{
 			// ref
-			if (	map[h][w] != '1' && \
-					map[h][w] != '0' && \
-					map[h][w] != 'P' && \
-					map[h][w] != 'C' && \
-					map[h][w] != 'E')
+			if (map[h][w] != '1' && \
+				map[h][w] != '0' && \
+				map[h][w] != 'P' && \
+				map[h][w] != 'C' && \
+				map[h][w] != 'E')
 			{
 				return (true);
 			}
@@ -88,7 +88,8 @@ int	is_top_and_end_only_wall(char **map, int line_num)
 	return (true);
 }
 
-int	is_area_surrounded_wall(char **map, int	line_num)
+// areaとはtopとendと統合してもいいかも
+int	is_area_surrounded_wall(char **map, size_t line_num)
 {
 	size_t	h;
 	size_t	top_len;
@@ -110,7 +111,7 @@ int	is_area_surrounded_wall(char **map, int	line_num)
 	return (true);
 }
 
-int	is_valid_area(char **map, int line_num)
+int	is_valid_area(char **map, size_t line_num)
 {
 	size_t	h;
 	int		p_count;

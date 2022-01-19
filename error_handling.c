@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 21:09:30 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/19 09:33:26 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/19 16:57:03 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	free_all(char *line, char **map)
 	}
 	if (map != NULL)
 	{
+		// printf("map[i] = %p\n", map[i]);
 		while (map[i] != NULL)
 		{
 			free(map[i]);

@@ -40,14 +40,14 @@ typedef struct s_data {
 void	abort_so_long(char *line, char **map);
 void	free_all(char *line, char **map);
 
-int		is_map_rectangle(char **map, int line_num, size_t *top_len);
+int		is_map_rectangle(char **map, size_t line_num, size_t *top_len);
 int		is_top_and_end_only_wall(char **map, int line_num);
-int		is_area_surrounded_wall(char **map, int	line_num);
-int		is_valid_area(char **map, int line_num);
+int		is_area_surrounded_wall(char **map, size_t line_num);
+int		is_valid_area(char **map, size_t line_num);
 int		is_included(char *line, char chara);
 
 size_t	count_line_num(char *filepath);
-int		validate(char **map, int line_num, size_t *top_len);
+int		validate(char **map, size_t line_num, size_t *top_len);
 t_data	init_data(char *filepath);
 char	**store_all_line(char *filepath, char **map);
 t_data	put_pixel_by(char **map, t_data data);
@@ -65,5 +65,7 @@ void	get_screen_size(t_data *data, size_t len, size_t line_num);
 void	abort_sl_with_msg(char *line, char **map, char *msg);
 void	print_error(void);
 int		has_invalid_attr(char **map);
+int		exit_game(int keycode, t_data *data);
+
 
 #endif
