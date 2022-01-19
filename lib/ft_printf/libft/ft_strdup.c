@@ -6,13 +6,13 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 17:32:26 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/13 22:31:18 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/19 18:07:39 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *src, int *status)
+char	*ft_strdup(const char *src)
 {
 	size_t		i;
 	size_t		len;
