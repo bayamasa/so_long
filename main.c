@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:02:44 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/19 10:48:17 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/19 13:26:31 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,13 +73,11 @@ void	check_args(int argc, char *argv[], char **filepath)
 	return ;
 }
 
-
 int	main(int argc, char *argv[])
 {
 	t_data	data;
 	char	*filepath;
 
-	//strcatで結合するよてい
 	check_args(argc, argv, &filepath);
 	data = init_data(filepath);
 	data = put_pixel_by(data.map, data);

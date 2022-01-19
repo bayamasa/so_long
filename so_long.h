@@ -40,7 +40,7 @@ typedef struct s_data {
 void	abort_so_long(char *line, char **map);
 void	free_all(char *line, char **map);
 
-int		is_line_same_length(char **map, int line_num, size_t *top_len);
+int		is_map_rectangle(char **map, int line_num, size_t *top_len);
 int		is_top_and_end_only_wall(char **map, int line_num);
 int		is_area_surrounded_wall(char **map, int	line_num);
 int		is_valid_area(char **map, int line_num);
@@ -64,5 +64,6 @@ void	get_screen_size(t_data *data, size_t len, size_t line_num);
 
 void	abort_sl_with_msg(char *line, char **map, char *msg);
 void	print_error(void);
+int		has_invalid_attr(char **map);
 
 #endif
