@@ -32,8 +32,8 @@ typedef struct s_data {
 	void	*mlx_win;
 	t_obj	obj;
 	char	**map;
-	int		win_w;
-	int		win_h;
+	int		win_x;
+	int		win_y;
 }		t_data;
 
 void	abort_so_long(char *line, char **map);
@@ -47,7 +47,7 @@ int		is_included(char *line, char chara);
 
 size_t	count_line_num(char *filepath);
 int		validate(char **map, int line_num, size_t *top_len);
-t_data	store_map_from_file(char *filepath);
+t_data	init_data(char *filepath);
 char	**store_all_line(char *filepath, char **map);
 t_data	put_pixel_by(char **map, t_data data);
 void	print_map(char **map);
@@ -59,5 +59,6 @@ int		is_obj_in_the(int direction, t_data d, char obj);
 void	move_player_grid(int code, char **map, int x, int y);
 void	rerender_player(int code, t_data *d);
 void	process_player_action(int direction, t_data *data);
+void	get_screen_size(t_data *data, size_t len, size_t line_num);
 
 #endif

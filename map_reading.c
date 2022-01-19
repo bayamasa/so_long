@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 10:54:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/18 17:31:48 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/18 20:37:18 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,28 @@ int	validate(char **map, int line_num, size_t *top_len)
 	return (false);
 }
 
-t_data	store_map_from_file(char *filepath)
+void	get_screen_size(t_data *data, size_t len, size_t line_num)
+{
+	int		screen_max_x;
+	int		screen_max_y;
+	size_t	x;
+	size_t	y;
+
+	// ここでoverflow起こす値を入れるとバグる
+	// x yはsize_tなのでバグらない
+	x = (len - 1) * PIXEL_WIDTH;
+	y = line_num * PIXEL_HEIGHT;
+	mlx_get_screen_size(data->mlx, &screen_max_x, &screen_max_y);
+	if (x > (size_t)screen_max_x || y > (size_t)screen_max_y)
+	{
+		printf("map too big\n");
+		abort_so_long(NULL, data->map);
+	}
+	data->win_x = x;
+	data->win_y = y;
+}
+
+t_data	init_data(char *filepath)
 {
 	char	**map;
 	size_t	line_num;
@@ -82,9 +103,9 @@ t_data	store_map_from_file(char *filepath)
 		abort_so_long(NULL, map);
 	}
 	data.map = map;
-	// ここでoverflow起こす値を入れるとバグる
-	data.win_w = (len - 1) * PIXEL_WIDTH;
-	data.win_h = line_num * PIXEL_HEIGHT;
+	data.mlx = mlx_init();
+	get_screen_size(&data, len, line_num);
+	data.mlx_win = mlx_new_window(data.mlx, data.win_x, data.win_y, "so_long");
 	return (data);
 }
 
