@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:02:44 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/19 13:26:31 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/19 14:32:21 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	do_player_keyhook(int keycode, void *data)
 	t_data	*d;
 
 	d = (t_data *)data;
-	d->obj.player.collect_count = 0;
 	if (keycode == KEY_ESC)
 		exit(0);
 	if (keycode == KEY_W)

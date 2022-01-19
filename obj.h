@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 09:09:36 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/19 14:18:45 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/19 14:23:32 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_player
 	int		width;
 	int		height;
 	size_t	collect_count;
-	size_t	player_step_count;
+	size_t	step_count;
 }		t_player;
 
 typedef struct s_wall

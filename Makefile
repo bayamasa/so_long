@@ -6,7 +6,7 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/17 09:45:32 by mhirabay          #+#    #+#              #
-#    Updated: 2022/01/19 14:17:52 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/01/19 14:45:40 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,12 @@ SRCS = 	main.c \
 # OPT_MLX = -Llib/mlx -lmlx -framework OpenGL -framework AppKit
 OPT_MLX = -I/usr/X11/include -Llib/mlx -lmlx_Darwin -L/usr/X11/include/../lib -lXext -lX11 -lm
 
+
+CC = gcc 
+CFLAGS = -Wall -Werror -Wextra 
+
 all:	
-	gcc  -Llib/gnl -lgnl -Llib/ft_printf -lftprintf ${OPT_MLX} ${SRCS} -o main
+	${CC} -Llib/gnl -lgnl -Llib/ft_printf -lftprintf ${OPT_MLX} ${SRCS} -o main
 
 clean: 
 	rm -rf *.out
