@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 13:50:37 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/19 15:58:17 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/19 17:22:25 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	process_player_action(int direction, t_data *data)
 			if (data->obj.present.num_in_map == 0)
 			{
 				printf("player GOAL\n");
-				exit(0);
+				exit_game(0, data);
 			}
 			else
 			{
