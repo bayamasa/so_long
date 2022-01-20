@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 13:50:37 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 20:31:48 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 20:53:36 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	move_player_grid(int code, char **map, int x, int y)
 	}
 }
 
-void	rerender_player(int code, t_data *d)
+void	render_player(int code, t_data *d)
 {
 	int				x;
 	int				y;
@@ -100,7 +100,27 @@ void	process_player_action(int direction, t_data *data)
 				return ;
 			}
 		}
-		rerender_player(direction, data);
+		render_player(direction, data);
 	}
 	store_present_num(data, (*data).map);
+}
+
+int	do_player_keyhook(int keycode, void *data)
+{
+	t_data	*d;
+
+	d = (t_data *)data;
+	if (keycode == KEY_ESC)
+	{
+		exit_game(d);
+	}
+	if (keycode == KEY_W)
+		process_player_action(UP, d);
+	if (keycode == KEY_S)
+		process_player_action(DOWN, d);
+	if (keycode == KEY_A)
+		process_player_action(LEFT, d);
+	if (keycode == KEY_D)
+		process_player_action(RIGHT, d);
+	return (0);
 }

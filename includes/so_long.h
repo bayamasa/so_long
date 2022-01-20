@@ -58,7 +58,7 @@ void	store_present_num(t_data *d, char **map);
 void	get_player_grid(char **map, int *x, int *y);
 int		is_obj_in_the(int direction, t_data d, char obj);
 void	move_player_grid(int code, char **map, int x, int y);
-void	rerender_player(int code, t_data *d);
+void	render_player(int code, t_data *d);
 void	process_player_action(int direction, t_data *data);
 void	get_screen_size(t_data *data, size_t len, size_t line_num);
 
@@ -67,5 +67,8 @@ void	print_error(void);
 int		has_invalid_attr(char **map);
 int		exit_game(t_data *data);
 int		close_game(void);
+int		do_player_keyhook(int keycode, void *data);
+void	check_args(int argc, char *argv[], char **filepath);
+int		is_valid_extension(const char *filepath, const char *ext);
 
 #endif
