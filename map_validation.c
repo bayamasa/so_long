@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 17:05:34 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 20:46:15 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 20:56:47 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	has_invalid_attr(char **map)
 		w = 0;
 		while (map[h][w] != '\0' && map[h][w] != '\n')
 		{
-			// ref
 			if (map[h][w] != '1' && \
 				map[h][w] != '0' && \
 				map[h][w] != 'P' && \
@@ -86,7 +85,6 @@ int	is_top_and_end_only_wall(char **map, int line_num)
 	return (true);
 }
 
-// areaとはtopとendと統合してもいいかも
 int	is_area_surrounded_wall(char **map, size_t line_num)
 {
 	size_t	h;
