@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:02:44 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 16:36:18 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 16:39:46 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,6 @@ int	main(int argc, char *argv[])
 	data = init_data(filepath);
 	data = put_pixel_by(data.map, data);
 	mlx_key_hook(data.mlx_win, do_player_keyhook, &data);
-	mlx_hook(data.mlx_win, X_EVENT_KEY_EXIT, 0, close_game, &data);
+	mlx_hook(data.mlx_win, X_EVENT_KEY_EXIT, 0, exit_game, &data);
 	mlx_loop(data.mlx);
 }
