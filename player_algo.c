@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 13:50:37 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 20:53:36 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 21:15:13 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,7 @@ int	do_player_keyhook(int keycode, void *data)
 
 	d = (t_data *)data;
 	if (keycode == KEY_ESC)
-	{
 		exit_game(d);
-	}
 	if (keycode == KEY_W)
 		process_player_action(UP, d);
 	if (keycode == KEY_S)

@@ -27,6 +27,7 @@
 # define LEFT 3
 
 # define ERROR "Error\n"
+# define BER_EXTENSION ".ber"
 
 typedef struct s_data {
 	void	*mlx;
