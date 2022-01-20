@@ -6,11 +6,11 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/17 09:45:32 by mhirabay          #+#    #+#              #
-#    Updated: 2022/01/20 10:38:40 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/01/20 16:38:40 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = main
+NAME = so_long
 SRCS = 	main.c \
 		map_reading.c \
 		error_handling.c \
@@ -26,7 +26,6 @@ LIB_NAME = libftprintf
 OBJS = ${SRCS:.c=.o}
 UNAME := $(shell uname)
 
-# OPT_MLX = -Llib/mlx -lmlx -framework OpenGL -framework AppKit
 ifeq (${UNAME},Darwin)
 	OPT_MLX = -I/usr/X11/include -Llib/mlx -lmlx_Darwin -L/usr/X11/include/../lib -lXext -lX11 -lm
 else
@@ -46,15 +45,13 @@ ${LIB_NAME} :
 	make -C lib/mlx
 
 ${NAME} : ${OBJS}
-	${CC} ${CFLAGS} ${OBJS} ${LDFLAGS} ${OPT_MLX} -o main
+	${CC} ${CFLAGS} ${OBJS} ${LDFLAGS} ${OPT_MLX} -o ${NAME} 
+
+debug: ${LIB_NAME} ${OBJS}
+	${CC} ${CFLAGS} ${DEBUG_FLAGS} ${OBJS} ${LDFLAGS} ${OPT_MLX} -o ${NAME}
 
 .c.o:
 		${CC} ${CFLAGS} -Iincludes -c $< -o $@
-	
-debug: ${OBJS}
-	${CC} ${CFLAGS} ${DEBUG_FLAGS} ${OBJS} ${LDFLAGS} ${OPT_MLX} -o main
-
- # gcc -I ../includes reread_test.c -L../lib/gnl -lgnl -o reread_test.o
 
 clean: 
 	make clean -C lib/ft_printf
