@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 17:01:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 16:57:10 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 20:30:06 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,23 +57,24 @@ void	put_image(t_data data, int width, int height, char map_attr)
 			data.mlx_win, data.obj.exit.img, width, height);
 }
 
-t_data	put_pixel_by(char **map, t_data data)
+int	put_pixel_by(t_data *data)
 {
 	size_t	w;
 	size_t	h;
+	char	**map;
 
 	w = 0;
 	h = 0;
-	data.obj = init_map_img(data.mlx);
+	map = data->map;
 	while (map[h] != NULL)
 	{
 		w = 0;
 		while (map[h][w] != '\n' && map[h][w] != '\0')
 		{
-			put_image(data, w * PIXEL_WIDTH, h * PIXEL_HEIGHT, map[h][w]);
+			put_image(*data, w * PIXEL_WIDTH, h * PIXEL_HEIGHT, map[h][w]);
 			w++;
 		}
 		h++;
 	}
-	return (data);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:24:15 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 10:14:54 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 20:00:30 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,9 @@ int	is_obj_in_the(int direction, t_data d, char obj)
 		if (d.map[y][x - 1] == obj)
 			return (true);
 	return (false);
+}
+
+int	expose_draw(void)
+{
+	return (0);
 }

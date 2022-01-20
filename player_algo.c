@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 13:50:37 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 10:14:54 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 20:30:50 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void	move_player_grid(int code, char **map, int x, int y)
 
 void	rerender_player(int code, t_data *d)
 {
-	int			x;
-	int			y;
-	static int	movement = 0;
+	int				x;
+	int				y;
+	static size_t	movement = 0;
 
 	get_player_grid(d->map, &x, &y);
 	mlx_put_image_to_window(d->mlx, \
@@ -92,7 +92,7 @@ void	process_player_action(int direction, t_data *data)
 			if (data->obj.present.num_in_map == 0)
 			{
 				printf("player GOAL\n");
-				exit_game(0, data);
+				exit_game(data);
 			}
 			else
 			{

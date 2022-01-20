@@ -48,9 +48,9 @@ int		is_included(char *line, char chara);
 
 size_t	count_line_num(char *filepath);
 int		validate(char **map, size_t line_num, size_t *top_len);
-t_data	init_data(char *filepath);
+void	init_data(char *filepath, t_data *data);
 char	**store_all_line(char *filepath, char **map);
-t_data	put_pixel_by(char **map, t_data data);
+int		put_pixel_by(t_data *data);
 void	print_map(char **map);
 t_obj	init_map_img(void *mlx);
 void	put_image(t_data data, int width, int height, char map_attr);
@@ -65,7 +65,7 @@ void	get_screen_size(t_data *data, size_t len, size_t line_num);
 void	abort_sl_with_msg(char *line, char **map, char *msg);
 void	print_error(void);
 int		has_invalid_attr(char **map);
-int		exit_game(int keycode, t_data *data);
-
+int		exit_game(t_data *data);
+int		close_game(void);
 
 #endif

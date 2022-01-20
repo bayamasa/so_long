@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 10:54:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 16:47:42 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 20:00:07 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,33 +77,26 @@ void	get_screen_size(t_data *data, size_t len, size_t line_num)
 	data->win_y = y;
 }
 
-t_data	init_data(char *filepath)
+void	init_data(char *filepath, t_data *data)
 {
 	char	**map;
 	size_t	line_num;
 	int		status;
-	t_data	data;
 	size_t	len;
 
 	status = 0;
-
-	data.mlx = NULL;
-	data.mlx_win = NULL;
-	data.win_x = 0;
-	data.win_y = 0;
-	data.map = NULL;
-
 	line_num = count_line_num(filepath);
 	map = (char **)malloc(sizeof(char *) * (line_num + 1));
 	map = store_all_line(filepath, map);
 	status = validate(map, line_num, &len);
 	if (status == false)
 		abort_sl_with_msg(NULL, map, VALIDATION_ERROR);
-	data.map = map;
-	data.mlx = mlx_init();
-	get_screen_size(&data, len, line_num);
-	data.mlx_win = mlx_new_window(data.mlx, data.win_x, data.win_y, "so_long");
-	return (data);
+	data->map = map;
+	data->mlx = mlx_init();
+	get_screen_size(data, len, line_num);
+	data->mlx_win = mlx_new_window(data->mlx, \
+		data->win_x, data->win_y, "so_long");
+	data->obj = init_map_img(data->mlx);
 }
 
 char	**store_all_line(char *filepath, char **map)

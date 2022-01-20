@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:02:44 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 16:39:46 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 20:15:52 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	do_player_keyhook(int keycode, void *data)
 	d = (t_data *)data;
 	if (keycode == KEY_ESC)
 	{
-		exit_game(keycode, d);
+		exit_game(d);
 	}
 	if (keycode == KEY_W)
 		process_player_action(UP, d);
@@ -32,10 +32,9 @@ int	do_player_keyhook(int keycode, void *data)
 	return (0);
 }
 
-int	exit_game(int keycode, t_data *data)
+int	exit_game(t_data *data)
 {
-	(void)keycode;
-	printf("process terminating...\n");
+	printf("game closing...\n");
 	free_all(NULL, data->map);
 	if (data->obj.wall.img != NULL)
 		mlx_destroy_image(data->mlx, data->obj.wall.img);
@@ -55,14 +54,6 @@ int	exit_game(int keycode, t_data *data)
 		mlx_loop_end(data->mlx);
 	}
 	free(data->mlx);
-	exit(0);
-}
-
-int	close_game(int keycode, t_data *data)
-{
-	(void)keycode;
-	(void)data;
-	printf("close game...\n");
 	exit(0);
 }
 
@@ -108,9 +99,10 @@ int	main(int argc, char *argv[])
 	char	*filepath;
 
 	check_args(argc, argv, &filepath);
-	data = init_data(filepath);
-	data = put_pixel_by(data.map, data);
+	init_data(filepath, &data);
+	put_pixel_by(&data);
 	mlx_key_hook(data.mlx_win, do_player_keyhook, &data);
 	mlx_hook(data.mlx_win, X_EVENT_KEY_EXIT, 0, exit_game, &data);
+	mlx_expose_hook(data.mlx_win, put_pixel_by, &data);
 	mlx_loop(data.mlx);
 }
