@@ -11,5 +11,6 @@
 # define VALIDATION_ERROR "validation error\n"
 # define FILE_NOT_FOUND_ERROR "file is not found\n"
 # define INVALID_ATTRIBUTE "map must contain only \"1, 0, P, C, E\"\n"
+# define FILE_READ_ERROR "cannot read map file\n"
 
 #endif

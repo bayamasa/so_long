@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 13:50:37 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 20:30:50 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 20:31:48 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	rerender_player(int code, t_data *d)
 			d->mlx_win, d->obj.player.img, (x - 1) * 50, y * 50);
 	move_player_grid(code, d->map, x, y);
 	movement++;
-	printf("player movements: %d\n", movement);
+	printf("player movements: %zu\n", movement);
 }
 
 void	process_player_action(int direction, t_data *data)

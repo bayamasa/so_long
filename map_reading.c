@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 10:54:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 20:00:07 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 20:44:44 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ size_t	count_line_num(char *filepath)
 	i = 0;
 	status = true;
 	line = get_next_line(fd, &status);
-	if (status == false)
-		abort_so_long(line, NULL);
+	if (status == -1)
+		abort_sl_with_msg(line, NULL, FILE_READ_ERROR);
 	while (line != NULL)
 	{
 		free(line);
 		line = get_next_line(fd, &status);
-		if (status == false)
-			abort_so_long(line, NULL);
+		if (status == -1)
+			abort_sl_with_msg(line, NULL, FILE_READ_ERROR);
 		i++;
 	}
 	close(fd);

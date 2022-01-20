@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/25 09:49:17 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/14 10:22:46 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 20:42:56 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*read_buffering(char **text, int *status, ssize_t text_len)
 	return (ret);
 }
 
-char	*finish(char **text, char *read_res, int *status)
+char	*finish(char **text, char *read_res, int *status, int read_count)
 {
 	ssize_t	index;
 	char	*ret;
@@ -49,6 +49,8 @@ char	*finish(char **text, char *read_res, int *status)
 	text_len = 0;
 	free(read_res);
 	ret = NULL;
+	if (read_count < 0)
+		*status = -1;
 	if (*text == NULL)
 		return (NULL);
 	while ((*text)[text_len] != '\0')
@@ -143,7 +145,7 @@ char	*get_next_line(int fd, int *status)
 		read_res = (char *)malloc(sizeof(char) * (size_t)BUFFER_SIZE + 1);
 		read_count = read(fd, read_res, BUFFER_SIZE);
 		if (read_count <= 0)
-			return (finish(&text, read_res, status));
+			return (finish(&text, read_res, status, read_count));
 		*(read_res + read_count) = '\0';
 		ret = store_buffer(read_res, &text, status, read_count);
 	}
