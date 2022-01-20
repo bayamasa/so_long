@@ -6,7 +6,7 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/17 09:45:32 by mhirabay          #+#    #+#              #
-#    Updated: 2022/01/20 20:55:37 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/01/20 21:43:22 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ fclean: clean
 	make fclean -C lib/gnl
 	make clean -C lib/mlx
 	${RM} ${NAME}
+	${RM} lib/mlx/libmlx_Linux.a
 re:		fclean all
 
-.PHONY: all clean fclean re .c.o 
+.PHONY: all clean fclean re .c.o debug
