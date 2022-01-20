@@ -6,10 +6,10 @@
 # include <unistd.h>
 # include <limits.h>
 # include <fcntl.h>
-# include "lib/ft_printf/ft_printf.h"
-# include "lib/gnl/get_next_line.h"
+# include "../lib/ft_printf/ft_printf.h"
+# include "../lib/gnl/get_next_line.h"
+# include "../lib/mlx/mlx.h"
 # include "obj.h"
-# include "lib/mlx/mlx.h"
 # include "error_msg.h"
 
 # define X_EVENT_KEY_PRESS	2

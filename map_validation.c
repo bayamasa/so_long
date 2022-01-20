@@ -6,11 +6,11 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 17:05:34 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/19 17:38:43 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 09:19:15 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "./includes/so_long.h"
 
 int	is_map_rectangle(char **map, size_t line_num, size_t *top_len)
 {

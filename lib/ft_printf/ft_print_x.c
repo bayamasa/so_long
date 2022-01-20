@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 15:54:31 by mhirabay          #+#    #+#             */
-/*   Updated: 2021/10/03 19:52:42 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 09:07:51 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 int	ft_print_x(unsigned int hex)
 {
 	char	*result;
-	int		i;
 
-	i = 0;
 	if (hex == 0)
 		return (ft_put_zero());
 	result = ft_convert_dec_to_hexstr(hex);

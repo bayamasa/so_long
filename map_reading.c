@@ -6,11 +6,11 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 10:54:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/19 16:06:25 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 09:19:15 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "./includes/so_long.h"
 
 size_t	count_line_num(char *filepath)
 {

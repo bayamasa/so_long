@@ -6,11 +6,11 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:02:44 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/19 17:11:34 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 09:19:15 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "./includes/so_long.h"
 
 int	do_player_keyhook(int keycode, void *data)
 {

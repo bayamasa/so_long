@@ -6,7 +6,7 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/17 09:45:32 by mhirabay          #+#    #+#              #
-#    Updated: 2022/01/19 18:06:00 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/01/20 09:24:41 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,24 +42,28 @@ all: ${LIB_NAME} ${NAME}
 ${LIB_NAME} :
 	make -C lib/ft_printf
 	make -C lib/gnl
+	make -C lib/mlx
 
 ${NAME} : ${OBJS}
 	${CC} ${CFLAGS} -Llib/ft_printf -lftprintf -Llib/gnl -lgnl ${OPT_MLX} ${SRCS} -o main
 
+.c.o:
+		${CC} ${CFLAGS} -Iincludes -c $< -o ${<:.c=.o}
+	
 debug:
 	${CC} ${CFLAGS} ${DEBUG_FLAGS} -Llib/gnl -lgnl -Llib/ft_printf -lftprintf ${OPT_MLX} ${SRCS} -o main
 
-.c.o:
-		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 clean: 
 	make clean -C lib/ft_printf
 	make clean -C lib/gnl
+	make clean -C lib/mlx
 	${RM} ${OBJS}
 
 fclean: clean
 	make fclean -C lib/ft_printf
 	make fclean -C lib/gnl
+	make clean -C lib/mlx
 	${RM} ${NAME}
 re:		fclean all
 
