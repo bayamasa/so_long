@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 10:54:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 10:14:54 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 16:47:42 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,13 @@ t_data	init_data(char *filepath)
 	size_t	len;
 
 	status = 0;
+
+	data.mlx = NULL;
+	data.mlx_win = NULL;
+	data.win_x = 0;
+	data.win_y = 0;
+	data.map = NULL;
+
 	line_num = count_line_num(filepath);
 	map = (char **)malloc(sizeof(char *) * (line_num + 1));
 	map = store_all_line(filepath, map);
