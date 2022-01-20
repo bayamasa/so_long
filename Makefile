@@ -6,7 +6,7 @@
 #    By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/17 09:45:32 by mhirabay          #+#    #+#              #
-#    Updated: 2022/01/20 09:24:41 by mhirabay         ###   ########.fr        #
+#    Updated: 2022/01/20 10:38:40 by mhirabay         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ endif
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 DEBUG_FLAGS = -g -fsanitize=address
+LDFLAGS = -Llib/ft_printf -lftprintf -Llib/gnl -lgnl 
 
 all: ${LIB_NAME} ${NAME}
 
@@ -45,14 +46,15 @@ ${LIB_NAME} :
 	make -C lib/mlx
 
 ${NAME} : ${OBJS}
-	${CC} ${CFLAGS} -Llib/ft_printf -lftprintf -Llib/gnl -lgnl ${OPT_MLX} ${SRCS} -o main
+	${CC} ${CFLAGS} ${OBJS} ${LDFLAGS} ${OPT_MLX} -o main
 
 .c.o:
-		${CC} ${CFLAGS} -Iincludes -c $< -o ${<:.c=.o}
+		${CC} ${CFLAGS} -Iincludes -c $< -o $@
 	
-debug:
-	${CC} ${CFLAGS} ${DEBUG_FLAGS} -Llib/gnl -lgnl -Llib/ft_printf -lftprintf ${OPT_MLX} ${SRCS} -o main
+debug: ${OBJS}
+	${CC} ${CFLAGS} ${DEBUG_FLAGS} ${OBJS} ${LDFLAGS} ${OPT_MLX} -o main
 
+ # gcc -I ../includes reread_test.c -L../lib/gnl -lgnl -o reread_test.o
 
 clean: 
 	make clean -C lib/ft_printf

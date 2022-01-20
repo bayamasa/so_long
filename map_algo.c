@@ -6,11 +6,11 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:24:15 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 09:19:15 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 10:14:54 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/so_long.h"
+#include "includes/so_long.h"
 
 void	store_present_num(t_data *d, char **map)
 {

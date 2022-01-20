@@ -6,11 +6,11 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/13 21:09:30 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 09:19:15 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 10:14:54 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/so_long.h"
+#include "includes/so_long.h"
 
 // ちゃんと全部の値がfreeできているかテストする
 void	free_all(char *line, char **map)

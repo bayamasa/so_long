@@ -6,11 +6,11 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 15:02:44 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 09:19:15 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/20 10:38:06 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/so_long.h"
+#include "includes/so_long.h"
 
 int	do_player_keyhook(int keycode, void *data)
 {
@@ -55,7 +55,7 @@ int	exit_game(int keycode, t_data *data)
 	// 	mlx_destroy_display(data->mlx);
 	// 	mlx_loop_end(data->mlx);
 	// }
-	system("leaks main");
+	// system("leaks main");
 	exit(0);
 }
 

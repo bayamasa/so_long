@@ -4,8 +4,8 @@
 #include <limits.h>
 #include <fcntl.h>
 
+#include "../includes/so_long.h"
 #include "../lib/gnl/get_next_line.h"
-#include "../so_long.h"
 
 // 一度closeしたファイルはもう一度最初から読み込まれる
 
