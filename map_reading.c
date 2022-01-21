@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 10:54:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/21 22:39:43 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/22 06:54:11 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ char	**store_all_line(char *filepath, char **map)
 	int		fd;
 	char	*line;
 	int		status;
-	int		h;
+	size_t	h;
 
 	h = 0;
 	status = true;

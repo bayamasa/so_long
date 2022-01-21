@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 17:05:34 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 20:56:47 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/22 06:56:52 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,9 @@ int	is_area_surrounded_wall(char **map, size_t line_num)
 int	is_valid_area(char **map, size_t line_num)
 {
 	size_t	h;
-	int		p_count;
-	int		c_count;
-	int		e_count;
+	size_t	p_count;
+	size_t	c_count;
+	size_t	e_count;
 
 	p_count = 0;
 	c_count = 0;
