@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/17 10:54:24 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 20:44:44 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/21 22:39:43 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,16 +87,23 @@ void	init_data(char *filepath, t_data *data)
 	status = 0;
 	line_num = count_line_num(filepath);
 	map = (char **)malloc(sizeof(char *) * (line_num + 1));
+	if (map == NULL)
+		abort_sl_with_msg(NULL, map, MALLOC_ERROR);
 	map = store_all_line(filepath, map);
 	status = validate(map, line_num, &len);
 	if (status == false)
 		abort_sl_with_msg(NULL, map, VALIDATION_ERROR);
 	data->map = map;
+	init_data_obj(data);
 	data->mlx = mlx_init();
+	if (data->mlx == NULL)
+		abort_sl_with_msg(NULL, map, MALLOC_ERROR);
 	get_screen_size(data, len, line_num);
 	data->mlx_win = mlx_new_window(data->mlx, \
 		data->win_x, data->win_y, "so_long");
-	data->obj = init_map_img(data->mlx);
+	if (data->mlx_win == NULL)
+		abort_sl_with_msg_free_mlx(data, MALLOC_ERROR);
+	init_map_img(data);
 }
 
 char	**store_all_line(char *filepath, char **map)

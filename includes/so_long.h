@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 21:36:01 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 21:36:02 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/21 22:51:53 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,14 @@ typedef struct s_data {
 
 void	abort_so_long(char *line, char **map);
 void	free_all(char *line, char **map);
+void	free_data(t_data *data);
 
 int		is_map_rectangle(char **map, size_t line_num, size_t *top_len);
 int		is_top_and_end_only_wall(char **map, int line_num);
 int		is_area_surrounded_wall(char **map, size_t line_num);
 int		is_valid_area(char **map, size_t line_num);
 int		is_included(char *line, char chara);
+void	init_data_obj(t_data *data);
 
 size_t	count_line_num(char *filepath);
 int		validate(char **map, size_t line_num, size_t *top_len);
@@ -65,7 +67,7 @@ void	init_data(char *filepath, t_data *data);
 char	**store_all_line(char *filepath, char **map);
 int		put_pixel_by(t_data *data);
 void	print_map(char **map);
-t_obj	init_map_img(void *mlx);
+void	init_map_img(t_data *d);
 void	put_image(t_data data, int width, int height, char map_attr);
 void	store_present_num(t_data *d, char **map);
 void	get_player_grid(char **map, int *x, int *y);
@@ -75,6 +77,7 @@ void	render_player(int code, t_data *d);
 void	process_player_action(int direction, t_data *data);
 void	get_screen_size(t_data *data, size_t len, size_t line_num);
 
+void	abort_sl_with_msg_free_mlx(t_data *data, char *msg);
 void	abort_sl_with_msg(char *line, char **map, char *msg);
 void	print_error(void);
 int		has_invalid_attr(char **map);

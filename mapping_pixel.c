@@ -6,32 +6,39 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 17:01:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 20:30:06 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/21 22:59:19 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
 
-t_obj	init_map_img(void *mlx)
+void	init_map_img(t_data *d)
 {
-	t_obj	o;
-
-	o.player.path = PLAYER_PATH;
-	o.wall.path = WALL_PATH;
-	o.floor.path = FLOOR_PATH;
-	o.present.path = PRESENT_PATH;
-	o.exit.path = EXIT_PATH;
-	o.player.img = mlx_xpm_file_to_image(mlx, \
-		o.player.path, &o.player.width, &o.player.height);
-	o.wall.img = mlx_xpm_file_to_image(mlx, \
-		o.wall.path, &o.wall.width, &o.wall.height);
-	o.floor.img = mlx_xpm_file_to_image(mlx, \
-		o.floor.path, &o.floor.width, &o.floor.height);
-	o.present.img = mlx_xpm_file_to_image(mlx, \
-		o.present.path, &o.present.width, &o.present.height);
-	o.exit.img = mlx_xpm_file_to_image(mlx, \
-		o.exit.path, &o.exit.width, &o.exit.height);
-	return (o);
+	d->obj.player.path = PLAYER_PATH;
+	d->obj.wall.path = WALL_PATH;
+	d->obj.floor.path = FLOOR_PATH;
+	d->obj.present.path = PRESENT_PATH;
+	d->obj.exit.path = EXIT_PATH;
+	d->obj.player.img = mlx_xpm_file_to_image(d->mlx, \
+		d->obj.player.path, &d->obj.player.width, &d->obj.player.height);
+	if (d->obj.player.img == NULL)
+		abort_sl_with_msg_free_mlx(d, MALLOC_ERROR);
+	d->obj.wall.img = mlx_xpm_file_to_image(d->mlx, \
+		d->obj.wall.path, &d->obj.wall.width, &d->obj.wall.height);
+	if (d->obj.wall.img == NULL)
+		abort_sl_with_msg_free_mlx(d, MALLOC_ERROR);
+	d->obj.floor.img = mlx_xpm_file_to_image(d->mlx, \
+		d->obj.floor.path, &d->obj.floor.width, &d->obj.floor.height);
+	if (d->obj.floor.img == NULL)
+		abort_sl_with_msg_free_mlx(d, MALLOC_ERROR);
+	d->obj.present.img = mlx_xpm_file_to_image(d->mlx, \
+		d->obj.present.path, &d->obj.present.width, &d->obj.present.height);
+	if (d->obj.present.img == NULL)
+		abort_sl_with_msg_free_mlx(d, MALLOC_ERROR);
+	d->obj.exit.img = mlx_xpm_file_to_image(d->mlx,\
+		d->obj.exit.path, &d->obj.exit.width, &d->obj.exit.height);
+	if (d->obj.exit.img == NULL)
+		abort_sl_with_msg_free_mlx(d, MALLOC_ERROR);
 }
 
 void	put_image(t_data data, int width, int height, char map_attr)

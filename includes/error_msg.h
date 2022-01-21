@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 21:35:58 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 21:35:59 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/21 22:00:23 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@
 # define FILE_NOT_FOUND_ERROR "file is not found\n"
 # define INVALID_ATTRIBUTE "map must contain only \"1, 0, P, C, E\"\n"
 # define FILE_READ_ERROR "cannot read map file\n"
+# define MALLOC_ERROR "malloc error\n"
 
 #endif

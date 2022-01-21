@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/18 09:24:15 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 20:56:24 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/21 22:32:59 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,13 @@ int	is_obj_in_the(int direction, t_data d, char obj)
 		if (d.map[y][x - 1] == obj)
 			return (true);
 	return (false);
+}
+
+void	init_data_obj(t_data *data)
+{
+	data->obj.wall.img = NULL;
+	data->obj.floor.img = NULL;
+	data->obj.exit.img = NULL;
+	data->obj.player.img = NULL;
+	data->obj.present.img = NULL;
 }

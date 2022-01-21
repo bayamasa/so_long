@@ -6,15 +6,14 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 20:51:41 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/20 20:52:19 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/21 22:11:15 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/so_long.h"
 
-int	exit_game(t_data *data)
+void	free_data(t_data *data)
 {
-	printf("game closing...\n");
 	free_all(NULL, data->map);
 	if (data->obj.wall.img != NULL)
 		mlx_destroy_image(data->mlx, data->obj.wall.img);
@@ -32,7 +31,13 @@ int	exit_game(t_data *data)
 	{
 		mlx_destroy_display(data->mlx);
 		mlx_loop_end(data->mlx);
+		free(data->mlx);
 	}
-	free(data->mlx);
+}
+
+int	exit_game(t_data *data)
+{
+	printf("game closing...\n");
+	free_data(data);
 	exit(0);
 }
