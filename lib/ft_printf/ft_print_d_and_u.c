@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 15:54:31 by mhirabay          #+#    #+#             */
-/*   Updated: 2021/09/23 15:24:59 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/21 16:20:39 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_print_d_and_u(long nb, int digits)
 	num = nb;
 	if (nb < 0)
 	{
-		ft_putchar_fd('-', 1);
+		ft_putchar_fd_pf('-', 1);
 		num = num * -1;
 		digits += 1;
 	}
@@ -31,7 +31,7 @@ int	ft_print_d_and_u(long nb, int digits)
 	if (num < 10)
 	{
 		digits += 1;
-		ft_putchar_fd('0' + num, 1);
+		ft_putchar_fd_pf('0' + num, 1);
 	}
 	return (digits);
 }

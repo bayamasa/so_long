@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/12 15:54:31 by mhirabay          #+#    #+#             */
-/*   Updated: 2021/12/28 15:17:26 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/21 16:20:33 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int	ft_print_c(char c)
 {
-	ft_putchar_fd(c, 1);
+	ft_putchar_fd_pf(c, 1);
 	return (1);
 }

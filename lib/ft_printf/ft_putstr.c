@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 16:57:17 by mhirabay          #+#    #+#             */
-/*   Updated: 2021/09/22 17:52:48 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/21 16:21:35 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t	ft_putstr(char *s)
 	if (!s)
 		return (0);
 	i = 0;
-	len = ft_strlen(s);
+	len = ft_strlen_pf(s);
 	while (len > STR_BUFF_SIZE)
 	{
 		write(1, s + i, STR_BUFF_SIZE);

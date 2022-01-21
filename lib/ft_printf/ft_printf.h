@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:08:26 by mhirabay          #+#    #+#             */
-/*   Updated: 2021/10/18 20:24:00 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/21 16:24:18 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
-# include "libft/libft.h"
 
 # define BASE "0123456789abcdef"
 # define MAX_LEN 100
@@ -41,5 +40,10 @@ size_t	ft_putstr(char *s);
 size_t	ft_putstr(char *s);
 int		ft_toupper(int c);
 int		ft_putres(char *result, int type);
+size_t	ft_strlen_pf(const char *str);
+void	*ft_calloc_pf(size_t count, size_t size);
+void	ft_putchar_fd_pf(char c, int fd);
+void	ft_bzero_pf(void *s, size_t n);
+void	*ft_memset_pf(void *buf, int ch, size_t n);
 
 #endif

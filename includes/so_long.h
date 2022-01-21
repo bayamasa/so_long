@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 21:36:01 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/21 22:51:53 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/21 23:03:15 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <limits.h>
 # include <fcntl.h>
 # include "../lib/ft_printf/ft_printf.h"
+# include "../lib/libft/libft.h"
 # include "../lib/gnl/get_next_line.h"
 # include "../lib/mlx/mlx.h"
 # include "obj.h"

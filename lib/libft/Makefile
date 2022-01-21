@@ -36,18 +36,8 @@ SRCS =	ft_atoi.c \
 			ft_atoi_error.c \
 			ft_strtoll.c \
 
-# BONUS = ft_lstiter.c \
-# 			ft_lstlast.c \
-# 			ft_lstmap.c \
-# 			ft_lstadd_back.c \
-# 			ft_lstadd_front.c \
-# 			ft_lstclear.c \
-# 			ft_lstnew.c \
-# 			ft_lstsize.c \
-# 			ft_lstdelone.c \
 
 OBJS = ${SRCS:.c=.o}
-OBJS_B = ${BONUS:.c=.o}
 CC		= gcc
 RM		= rm -f
 CFLAGS = -Wall -Wextra -Werror
@@ -56,9 +46,6 @@ all:	${NAME}
 
 $(NAME): ${OBJS}
 		ar rcs ${NAME} ${OBJS}
-
-bonus: ${OBJS} ${OBJS_B}
-		ar rcs ${NAME} ${OBJS} ${OBJS_B} 
 
 .c.o:
 		${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
@@ -71,4 +58,4 @@ fclean:	clean
 
 re:		fclean all
 
-.PHONY: all clean fclean re .c.o bonus
+.PHONY: all clean fclean re .c.o
