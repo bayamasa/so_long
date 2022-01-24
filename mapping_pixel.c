@@ -6,7 +6,7 @@
 /*   By: mhirabay <mhirabay@student.42tokyo.jp>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 17:01:56 by mhirabay          #+#    #+#             */
-/*   Updated: 2022/01/21 22:59:19 by mhirabay         ###   ########.fr       */
+/*   Updated: 2022/01/24 14:02:05 by mhirabay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	init_map_img(t_data *d)
 		d->obj.present.path, &d->obj.present.width, &d->obj.present.height);
 	if (d->obj.present.img == NULL)
 		abort_sl_with_msg_free_mlx(d, MALLOC_ERROR);
-	d->obj.exit.img = mlx_xpm_file_to_image(d->mlx,\
+	d->obj.exit.img = mlx_xpm_file_to_image(d->mlx, \
 		d->obj.exit.path, &d->obj.exit.width, &d->obj.exit.height);
 	if (d->obj.exit.img == NULL)
 		abort_sl_with_msg_free_mlx(d, MALLOC_ERROR);
